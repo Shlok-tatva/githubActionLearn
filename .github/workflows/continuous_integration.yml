@@ -1,25 +1,28 @@
-name : continuous integration of a java script project
+name: Continuous Integration of a JavaScript Project
 
-on: 
+on:
   workflow_dispatch:
   push:
+    branches:
+      - master
   pull_request:
-
-
+    branches:
+      - master
 
 jobs:
-
-  build-and-run:
-
+  install-dependencies:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checking out the code
         uses: actions/checkout@v2
+
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.10.0'
-      - run: npm i
-      - run: npm test
-      
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Run tests
+        run: npm test
