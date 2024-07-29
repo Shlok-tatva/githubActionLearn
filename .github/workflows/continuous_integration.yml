@@ -10,7 +10,7 @@ on:
       - master
 
 jobs:
-  install-dependencies:
+  install-dependencies-and-run-code:
     runs-on: ubuntu-latest
     steps:
       - name: Checking out the code
@@ -26,3 +26,4 @@ jobs:
 
       - name: Run tests
         run: npm test
+        
